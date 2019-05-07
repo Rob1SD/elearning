@@ -8,7 +8,7 @@ var pos=0; // la video a jouer en premier
 
 // temps en minute
 var tempsEntreDeuxVideo = 10;
-var timer = tempsEntreDeuxVideo * 60 * 1000;
+var timer = tempsEntreDeuxVideo * 60;
 
 
 for (var i = 0; i < divVideoChilds.length; ++i){
@@ -31,11 +31,12 @@ setTimeout(function() {
 setInterval(function() {
 	VideoList[pos].click();
 	pos++;
+	timer=tempsEntreDeuxVideo*60;
 },tempsEntreDeuxVideo * 60 * 1000);
 
 setInterval(function() {
-	console.log("changement de video dans : " + timer / 1000);
-	timer-=1000;
+	console.log("changement de video dans : " + timer);
+	timer--;
 	
 },1000);
 
