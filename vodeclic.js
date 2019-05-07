@@ -5,6 +5,12 @@ var divList=[];
 var allVideos=divVideo.find("ul");
 var VideoList=[]
 var pos=0; // la video a jouer en premier
+
+// temps en minute
+var tempsEntreDeuxVideo = 10;
+var timer = tempsEntreDeuxVideo * 60 * 1000;
+
+
 for (var i = 0; i < divVideoChilds.length; ++i){
 	if (divVideoChilds[i].classList && divVideoChilds[i].classList.value == "skill-list-item closed"){
 		divVideoChilds[i].click();
@@ -25,4 +31,12 @@ setTimeout(function() {
 setInterval(function() {
 	VideoList[pos].click();
 	pos++;
-},10 * 60 * 10000);
+},tempsEntreDeuxVideo * 60 * 1000);
+
+setInterval(function() {
+	console.log("changement de video dans : " + timer / 1000);
+	timer-=1000;
+	
+},1000);
+
+
