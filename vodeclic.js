@@ -58,6 +58,8 @@ for (var i = 0; i < VideoList.length; ++i){
 	if (isSeenOld(VideoList[i])){
 		pos++;
 	}
+	else
+		break
 }
 setTimeout(function() {
 	console.log("on demarre video : " + pos);
