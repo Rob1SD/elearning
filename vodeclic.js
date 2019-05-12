@@ -28,7 +28,17 @@ var fillVideos = function(){
 
 
 }
+
 var isSeen = function(video){
+	if(jwplayer("player-video").getPosition() == jwplayer("player-video").getDuration()){
+		return true;
+	}
+	return false;
+}
+
+fillVideos();
+
+var isSeenOld = function(video){
 	for (var i = 0; i < video.children.length; ++i){
 		if (video.children[i].dataset && video.children[i].dataset.msvSeen){
 			
@@ -43,9 +53,9 @@ var isSeen = function(video){
 	}
 	return false;
 }
-fillVideos();
+
 for (var i = 0; i < VideoList.length; ++i){
-	if (isSeen(VideoList[i])){
+	if (isSeenOld(VideoList[i])){
 		pos++;
 	}
 }
@@ -54,6 +64,7 @@ setTimeout(function() {
 	VideoList[pos].click();
 	
 },2000);
+
 setInterval(function() {
 	fillVideos();
 	
@@ -69,6 +80,3 @@ setInterval(function() {
 		
 	}
 },10000);
-
-
-
